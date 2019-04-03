@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.tdymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Handling</title>
+</head>
+<body>
+
+<div>
+    <form action="#" th:action="@{/hasil}" th:object="${command}" method="post">
+        <table>
+            <tr>
+                <td>Text Field:</td>
+                <td><input type="text" th:field="*{textField}" /></td>
+            </tr>
+            <tr>
+                <td>Text Area Field:</td>
+                <td><textarea th:field="*{textareaField}" ></textarea></td>
+            </tr>
+            <tr>
+                <td>Date Field:</td>
+                <td><input type="datetime-local" th:field="*{datetimeField}" /></td>
+            </tr>
+            <tr>
+                <td>Color Field:</td>
+                <td><input type="color" th:field="*{colorField}" /></td>
+            </tr>
+            <tr>
+                <td>Single Checkbox Field:</td>
+                <td><input type="checkbox" th:field="*{singleCheckboxField}" /></td>
+            </tr>
+            <tr>
+                <td>Multi Checkbox Fields:</td>
+                <td>
+                    <ul>
+                        <li th:each="checkboxValue: ${multiCheckboxAllValues}">
+                            <input type="checkbox"
+                                   th:field="*{multiCheckboxSelectedValues}"
+                                   th:value="${checkboxValue}" />
+                            <label
+                                    th:for="${#ids.prev('multiCheckboxSelectedValues')}"
+                                    th:text="${checkboxValue}"></label>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Radio Button Fields:</td>
+                <td>
+                    <ul>
+                        <li th:each="radioValue: ${singleSelectAllValues}">
+                            <input type="radio"
+                                   th:field="*{radioButtonSelectedValue}"
+                                   th:value="${radioValue}" />
+                            <label th:for="${#ids.prev('radioButtonSelectedValue')}"
+                                    th:text="${radioValue}"></label>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Dropdown Field:</td>
+                <td>
+                    <select th:field="*{dropdownSelectedValue}">
+                        <option
+                                th:each="dropdownValue: ${singleSelectAllValues}"
+                                th:value="${dropdownValue}"
+                                th:text="${dropdownValue}" ></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Submit" /></td>
+                <td><input type="reset" value="Reset" /></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>

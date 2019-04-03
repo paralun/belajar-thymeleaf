@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hasil</title>
+</head>
+<body>
+
+<h1>Hasil Binding</h1>
+<table>
+    <tr>
+        <td>Text Field:</td>
+        <td th:text="${command.textField}"></td>
+    </tr>
+    <tr>
+        <td>Text Area Field:</td>
+        <td th:text="${command.textareaField}"></td>
+    </tr>
+    <tr>
+        <td>Date Field:</td>
+        <td th:text="${command.datetimeField}"></td>
+    </tr>
+    <tr>
+        <td>Color Field:</td>
+        <td th:text="${command.colorField}"></td>
+    </tr>
+    <tr>
+        <td>Single Checkbox Field:</td>
+        <td th:text="${command.singleCheckboxField}"></td>
+    </tr>
+    <tr>
+        <td>Multi Checkbox Fields:</td>
+        <td>
+            <ul>
+                <li th:each="checkboxValue: ${command.multiCheckboxSelectedValues}">
+                    <label th:text="${checkboxValue}"></label>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>Radio Button Fields:</td>
+        <td th:text="${command.radioButtonSelectedValue}"></td>
+    </tr>
+    <tr>
+        <td>Dropdown Field:</td>
+        <td th:text="${command.dropdownSelectedValue}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
